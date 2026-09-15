@@ -1,0 +1,18 @@
+@model EchoCrafter.Models.Product
+@{
+    ViewData["Title"] = Model.Name;
+}
+<div class="product-detail">
+    <img src="@Model.ImageUrl" alt="@Model.Name" />
+    <div class="info">
+        <h1>@Model.Name</h1>
+        <p class="price">R @Model.Price</p>
+        <p>@Model.Description</p>
+        <form method="post" action="/cart/add/@Model.Id">
+            <label>Qty
+                <input name="qty" type="number" value="1" min="1" />
+            </label>
+            <button class="btn">Add to cart</button>
+        </form>
+    </div>
+</div>

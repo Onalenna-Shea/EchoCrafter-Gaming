@@ -1,0 +1,47 @@
+@model List<EchoCrafter.Models.CartItem>
+@{
+    ViewData["Title"] = "Your Cart";
+    decimal total = (decimal)ViewBag.Total;
+}
+<h1>Your Cart</h1>
+@if (!Model.Any()) {
+    <p>Your shopping bag is empty. <a href="/">Continue shopping</a>.</p>
+} else {
+<table class="cart">
+    <thead>
+        <tr><th>Product</th><th>Qty</th><th>Price</th><th>Subtotal</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td class="product-cell">
+                    <img src="@item.ImageUrl" alt="@item.Name" />
+                    <span>@item.Name</span>
+                </td>
+                <td>
+                    <form method="post" action="/cart/update/@item.ProductId" class="qty-form">
+                        <input name="qty" type="number" value="@item.Quantity" min="1" />
+                        <button class="link">Update</button>
+                    </form>
+                </td>
+                <td>R @item.UnitPrice</td>
+                <td>R @(item.UnitPrice * item.Quantity)</td>
+                <td>
+                    <form method="post" action="/cart/remove/@item.ProductId">
+                        <button class="link">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" style="text-align:right"><strong>Total:</strong></td>
+            <td colspan="2"><strong>R @total</strong></td>
+        </tr>
+    </tfoot>
+</table>
+<div class="checkout-cta">
+    <a class="btn" href="/checkout">Proceed to checkout</a>
+</div>
+}

@@ -1,0 +1,14 @@
+@model EchoCrafter.Models.Order
+@{
+    ViewData["Title"] = "Order Confirmed";
+}
+<h1>Thank you for purchasing at EchoCrafter online store, @Model.CustomerName!</h1>
+<p>Your order #@Model.Id has been placed on @Model.PlacedAt.ToLocalTime().</p>
+<h3>Items</h3>
+<ul>
+@foreach (var it in Model.Items) {
+    <li>@it.Product!.Name x @it.Quantity — R @(it.UnitPrice * it.Quantity)</li>
+}
+</ul>
+<p><strong>Total paid: R @Model.Total</strong></p>
+<p><a class="btn" href="/">Back to store</a></p>
