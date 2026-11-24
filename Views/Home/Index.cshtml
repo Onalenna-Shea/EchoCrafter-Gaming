@@ -1,0 +1,137 @@
+@model IEnumerable<EchoCrafter.Models.Product>
+@{
+    ViewData["Title"] = "Home";
+    var categories = ViewBag.Categories as IEnumerable<EchoCrafter.Models.Category>;
+    string active = ViewBag.ActiveCategory as string ?? "";
+}
+<section class="gp-hero" id="gpHero" aria-label="EchoCrafter gaming intro">
+    <div class="gp-sticky">
+        <div class="gp-text">
+            <img class="gp-logo" src="/img/EchoCrafter logo.jpeg" width="72" height="72" alt="EchoCrafter logo" />
+            <h1>Gear that works<br />for your <span class="gp-glow">game</span></h1>
+            <p>Shop with us at EchoCrafter gaming. Xbox and PlayStation gear, apparel and combos, built by gamers for gamers.</p>
+            <p class="gp-address">Bloemfontein 9300, Mangaung, Rockland 3999 Choeu Str</p>
+            <a class="gp-cta" href="#shop">Shop now <span aria-hidden="true">&#8599;</span></a>
+        </div>
+
+        <div class="gp-stage" aria-hidden="true">
+            <div class="gp-aura"></div>
+            <svg class="gp-pad" viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg" role="img">
+                <defs>
+                    <linearGradient id="gpBody" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#27313f" />
+                        <stop offset="1" stop-color="#0a0e14" />
+                    </linearGradient>
+                    <linearGradient id="gpEdge" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0" stop-color="#4dff7c" />
+                        <stop offset="1" stop-color="#2aa8ff" />
+                    </linearGradient>
+                    <radialGradient id="gpStick" cx=".4" cy=".35" r=".8">
+                        <stop offset="0" stop-color="#4b5666" />
+                        <stop offset="1" stop-color="#10151c" />
+                    </radialGradient>
+                    <filter id="gpBlur" x="-30%" y="-30%" width="160%" height="160%">
+                        <feGaussianBlur stdDeviation="6" />
+                    </filter>
+                </defs>
+
+                <!-- body -->
+                <g class="gp-part" data-a="0,.40" data-from="0,140,0,.75">
+                    <path class="gp-halo" filter="url(#gpBlur)" d="M170 70C120 70 90 110 70 200C50 290 40 360 80 375C120 390 150 340 190 300C210 280 240 270 320 270C400 270 430 280 450 300C490 340 520 390 560 375C600 360 590 290 570 200C550 110 520 70 470 70Q320 50 170 70Z" />
+                    <path d="M170 70C120 70 90 110 70 200C50 290 40 360 80 375C120 390 150 340 190 300C210 280 240 270 320 270C400 270 430 280 450 300C490 340 520 390 560 375C600 360 590 290 570 200C550 110 520 70 470 70Q320 50 170 70Z" fill="url(#gpBody)" stroke="url(#gpEdge)" stroke-width="3" />
+                    <path d="M200 92Q320 76 440 92" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="3" stroke-linecap="round" />
+                </g>
+
+                <!-- bumpers -->
+                <g class="gp-part" data-a=".30,.52" data-from="-70,-90,-14,1">
+                    <path d="M150 80Q172 40 242 52L238 74Q192 68 168 94Z" fill="#161c25" stroke="url(#gpEdge)" stroke-width="2.5" />
+                </g>
+                <g class="gp-part" data-a=".30,.52" data-from="70,-90,14,1">
+                    <path d="M490 80Q468 40 398 52L402 74Q448 68 472 94Z" fill="#161c25" stroke="url(#gpEdge)" stroke-width="2.5" />
+                </g>
+
+                <!-- left stick -->
+                <g class="gp-part" data-a=".45,.66" data-from="-120,-60,-90,.4">
+                    <circle cx="175" cy="150" r="40" fill="#0b0f14" stroke="#2f3b4b" stroke-width="3" />
+                    <circle cx="175" cy="150" r="27" fill="url(#gpStick)" stroke="#4dff7c" stroke-opacity=".6" stroke-width="2" />
+                    <circle cx="175" cy="150" r="12" fill="none" stroke="#ffffff" stroke-opacity=".15" stroke-width="2" />
+                </g>
+
+                <!-- d-pad -->
+                <g class="gp-part" data-a=".52,.72" data-from="-120,80,90,.4">
+                    <path d="M243 215h24v14h14v24h-14v14h-24v-14h-14v-24h14z" fill="#0b0f14" stroke="#2aa8ff" stroke-opacity=".8" stroke-width="2.5" stroke-linejoin="round" />
+                    <path class="gp-dpad-hint" d="M255 222v8M255 258v-8M236 241h8M274 241h-8" stroke="#ffffff" stroke-opacity=".35" stroke-width="2" stroke-linecap="round" />
+                </g>
+
+                <!-- right stick -->
+                <g class="gp-part" data-a=".58,.78" data-from="120,80,90,.4">
+                    <circle cx="385" cy="235" r="40" fill="#0b0f14" stroke="#2f3b4b" stroke-width="3" />
+                    <circle cx="385" cy="235" r="27" fill="url(#gpStick)" stroke="#2aa8ff" stroke-opacity=".6" stroke-width="2" />
+                    <circle cx="385" cy="235" r="12" fill="none" stroke="#ffffff" stroke-opacity=".15" stroke-width="2" />
+                </g>
+
+                <!-- face buttons -->
+                <g class="gp-part gp-btn gp-b1" data-a=".66,.82" data-from="90,-110,0,.2">
+                    <circle cx="470" cy="180" r="19" fill="#0b0f14" stroke="#4dff7c" stroke-width="3" />
+                    <text x="470" y="187" text-anchor="middle" fill="#4dff7c" font-size="20" font-weight="800">A</text>
+                </g>
+                <g class="gp-part gp-btn gp-b2" data-a=".70,.85" data-from="110,-90,0,.2">
+                    <circle cx="500" cy="150" r="19" fill="#0b0f14" stroke="#ff5a6e" stroke-width="3" />
+                    <text x="500" y="157" text-anchor="middle" fill="#ff5a6e" font-size="20" font-weight="800">B</text>
+                </g>
+                <g class="gp-part gp-btn gp-b3" data-a=".74,.88" data-from="70,-90,0,.2">
+                    <circle cx="440" cy="150" r="19" fill="#0b0f14" stroke="#2aa8ff" stroke-width="3" />
+                    <text x="440" y="157" text-anchor="middle" fill="#2aa8ff" font-size="20" font-weight="800">X</text>
+                </g>
+                <g class="gp-part gp-btn gp-b4" data-a=".78,.92" data-from="90,-130,0,.2">
+                    <circle cx="470" cy="120" r="19" fill="#0b0f14" stroke="#e8ff4d" stroke-width="3" />
+                    <text x="470" y="127" text-anchor="middle" fill="#e8ff4d" font-size="20" font-weight="800">Y</text>
+                </g>
+
+                <!-- centre buttons + logo -->
+                <g class="gp-part" data-a=".84,1" data-from="0,-40,0,.3">
+                    <circle cx="285" cy="150" r="8" fill="#161c25" stroke="#ffffff" stroke-opacity=".4" stroke-width="2" />
+                    <circle cx="355" cy="150" r="8" fill="#161c25" stroke="#ffffff" stroke-opacity=".4" stroke-width="2" />
+                    <circle class="gp-core" cx="320" cy="108" r="15" fill="#0b0f14" stroke="url(#gpEdge)" stroke-width="3" />
+                    <circle class="gp-core-dot" cx="320" cy="108" r="6" fill="url(#gpEdge)" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="gp-hint" aria-hidden="true"><span></span>Scroll</div>
+    </div>
+</section>
+
+<nav class="gp-cats" aria-label="Shop by category">
+    @if (categories != null) {
+        foreach (var c in categories) {
+            <a href="/?category=@c.Slug#shop"><span class="gp-pill">@c.Name</span><span class="gp-arrow" aria-hidden="true">&#8599;</span></a>
+        }
+    }
+</nav>
+
+<div class="filters" id="shop">
+    <a class="chip @(string.IsNullOrEmpty(active) ? "active" : "")" href="/">All</a>
+    @if (categories != null) {
+        foreach (var c in categories) {
+            <a class="chip @(active == c.Slug ? "active" : "")" href="/?category=@c.Slug">@c.Name</a>
+        }
+    }
+</div>
+
+<div class="grid">
+@foreach (var p in Model) {
+    <article class="card">
+        <a href="/products/@p.Slug">
+            <img src="@p.ImageUrl" alt="@p.Name" />
+            <div class="card-body">
+                <h3>@p.Name</h3>
+                <p class="price">R @p.Price</p>
+            </div>
+        </a>
+        <form method="post" action="/cart/add/@p.Id">
+            <button class="btn">Add to cart</button>
+        </form>
+    </article>
+}
+</div>
